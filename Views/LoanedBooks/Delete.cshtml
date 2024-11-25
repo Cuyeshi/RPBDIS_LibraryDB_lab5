@@ -1,0 +1,21 @@
+﻿@model RPBDIS_LibraryDB_lab5.Models.LoanedBook
+
+@{
+    ViewData["Title"] = "Удалить запись";
+}
+
+<h1>Удалить запись</h1>
+
+<p>Вы уверены, что хотите удалить эту запись?</p>
+
+<div>
+    <h3>Книга: @Model.Book.Title</h3>
+    <p>Дата выдачи: @Model.LoanDate.ToShortDateString()</p>
+    <p>Дата возврата: @(Model.ReturnDate?.ToShortDateString() ?? "Не указано")</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="LoanId" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

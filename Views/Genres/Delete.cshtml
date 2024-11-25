@@ -1,0 +1,20 @@
+﻿@model RPBDIS_LibraryDB_lab5.Models.Genre
+
+@{
+    ViewData["Title"] = "Удалить жанр";
+}
+
+<h1>Удалить жанр</h1>
+
+<h3>Вы уверены, что хотите удалить этот жанр?</h3>
+
+<div>
+    <h4>@Model.Name</h4>
+    <p>@Model.Description</p>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="GenreId" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

@@ -1,0 +1,33 @@
+﻿@model RPBDIS_LibraryDB_lab5.Models.Book
+
+<h2>Удалить книгу</h2>
+
+<div>
+    <h4>Вы уверены, что хотите удалить эту книгу?</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Название</dt>
+        <dd class="col-sm-10">@Model.Title</dd>
+
+        <dt class="col-sm-2">Автор</dt>
+        <dd class="col-sm-10">@Model.Author</dd>
+
+        <dt class="col-sm-2">Жанр</dt>
+        <dd class="col-sm-10">@Model.Genre?.Name</dd>
+
+        <dt class="col-sm-2">Издатель</dt>
+        <dd class="col-sm-10">@Model.Publisher?.Name</dd>
+
+        <dt class="col-sm-2">Цена</dt>
+        <dd class="col-sm-10">@Model.Price</dd>
+
+        <dt class="col-sm-2">Год издания</dt>
+        <dd class="col-sm-10">@Model.PublishYear</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="BookId" />
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>

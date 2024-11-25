@@ -1,0 +1,50 @@
+﻿@model RPBDIS_LibraryDB_lab5.Models.Book
+
+<h2>Редактировать книгу</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="BookId" />
+
+    <div class="form-group">
+        <label asp-for="Title">Название</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Author">Автор</label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreId">Жанр</label>
+        <select asp-for="GenreId" class="form-control" asp-items="ViewBag.Genres"></select>
+        <span asp-validation-for="GenreId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PublisherId">Издатель</label>
+        <select asp-for="PublisherId" class="form-control" asp-items="ViewBag.Publishers"></select>
+        <span asp-validation-for="PublisherId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price">Цена</label>
+        <input asp-for="Price" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PublishYear">Год издания</label>
+        <input asp-for="PublishYear" type="number" class="form-control" />
+        <span asp-validation-for="PublishYear" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
