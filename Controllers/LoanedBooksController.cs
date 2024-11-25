@@ -14,9 +14,22 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var loanedBooks = _context.LoanedBooks.Include(lb => lb.Book).ThenInclude(b => b.Genre).ToList();
+            //var loanedBooks = _context.LoanedBooks.Include(lb => lb.Book).ThenInclude(b => b.Genre).ToList();
+
+            int pageSize = 10; // Количество записей на странице
+            var totalLoanedBooks = _context.LoanedBooks.Count(); // Общее количество записей
+            var loanedBooks = _context.LoanedBooks
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .Include(lb => lb.Book)
+                .ThenInclude(b => b.Genre)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalLoanedBooks / (double)pageSize);
+
             return View(loanedBooks);
         }
 

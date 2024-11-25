@@ -14,9 +14,18 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         }
 
         // GET: Genres
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var genres = _context.Genres.ToList();
+            int pageSize = 10; // Количество записей на странице
+            var totalGenres = _context.Genres.Count(); // Общее количество записей
+            var genres = _context.Genres
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalGenres / (double)pageSize);
+
             return View(genres);
         }
 

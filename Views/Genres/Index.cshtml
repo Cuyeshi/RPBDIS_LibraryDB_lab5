@@ -33,3 +33,59 @@
         }
     </tbody>
 </table>
+
+<nav>
+    <ul class="pagination">
+        <!-- Ссылка на первую страницу -->
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-page="1">1</a>
+            </li>
+            @if (ViewBag.CurrentPage > 3)
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            }
+        }
+
+        <!-- Соседние страницы до текущей -->
+        @for (int i = ViewBag.CurrentPage - 2; i < ViewBag.CurrentPage; i++)
+        {
+            if (i > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                </li>
+            }
+        }
+
+        <!-- Текущая страница -->
+        <li class="page-item active">
+            <span class="page-link">@ViewBag.CurrentPage</span>
+        </li>
+
+        <!-- Соседние страницы после текущей -->
+        @for (int i = ViewBag.CurrentPage + 1; i <= ViewBag.CurrentPage + 2 && i < ViewBag.TotalPages; i++)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+            </li>
+        }
+
+        <!-- Ссылка на последнюю страницу -->
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages - 2)
+        {
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
+        }
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-page="@ViewBag.TotalPages">@ViewBag.TotalPages</a>
+            </li>
+        }
+    </ul>
+</nav>

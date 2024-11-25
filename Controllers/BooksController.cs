@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RPBDIS_LibraryDB_lab5.Models;
+using System.Linq;
 
 namespace RPBDIS_LibraryDB_lab5.Controllers
 {
@@ -15,9 +16,18 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         }
 
         // GET: Books
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var books = _context.Books.Include(b => b.Genre).Include(b => b.Publisher).ToList();
+            int pageSize = 10; // Количество записей на странице
+            var totalItems = _context.Books.Count(); // Общее количество записей
+            var books = _context.Books
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
             return View(books);
         }
 
