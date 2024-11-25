@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Genre>
+<h1>Genres</h1>
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+    @foreach (var genre in Model)
+    {
+        <tr>
+            <td>@genre.Name</td>
+        </tr>
+    }
+</table>

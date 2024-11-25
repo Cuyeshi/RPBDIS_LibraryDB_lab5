@@ -1,0 +1,19 @@
+﻿@model IEnumerable<LoanedBook>
+<h1>Loaned Books</h1>
+<table>
+    <tr>
+        <th>Book Title</th>
+        <th>Genre</th>
+        <th>Loan Date</th>
+        <th>Return Date</th>
+    </tr>
+    @foreach (var loanedBook in Model)
+    {
+        <tr>
+            <td>@loanedBook.Book.Title</td>
+            <td>@loanedBook.Book.Genre.Name</td>
+            <td>@loanedBook.LoanDate</td>
+            <td>@loanedBook.ReturnDate?.ToString("yyyy-MM-dd")</td>
+        </tr>
+    }
+</table>
