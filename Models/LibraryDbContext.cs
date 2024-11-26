@@ -13,5 +13,8 @@ namespace RPBDIS_LibraryDB_lab5.Models
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Reader> Readers { get; set; }
+
+        
     }
+
 }

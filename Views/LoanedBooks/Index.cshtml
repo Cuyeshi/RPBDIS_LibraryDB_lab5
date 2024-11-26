@@ -5,6 +5,20 @@
     <a asp-action="Back" class="btn btn-secondary">Вернуться на главную</a>
 </p>
 
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="form-row">
+        <div class="col">
+            <input type="text" name="bookTitleFilter" class="form-control" placeholder="Название книги"
+                   value="@ViewBag.BookTitleFilter" />
+        </div>
+        
+        <div class="col">
+            <button type="submit" class="btn btn-success">Применить</button>
+            <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -36,7 +50,11 @@
         @if (ViewBag.CurrentPage > 1)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-route-page="1">1</a>
+                <a class="page-link" asp-action="Index" asp-route-page="1"
+                   asp-route-bookTitleFilter="@ViewBag.BookTitleFilter"
+                   asp-route-loanDateFilter="@ViewBag.LoanDateFilter">
+                    1
+                </a>
             </li>
             @if (ViewBag.CurrentPage > 3)
             {
@@ -52,7 +70,11 @@
             if (i > 1)
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                    <a class="page-link" asp-action="Index" asp-route-page="@i"
+                       asp-route-bookTitleFilter="@ViewBag.BookTitleFilter"
+                       asp-route-loanDateFilter="@ViewBag.LoanDateFilter">
+                        @i
+                    </a>
                 </li>
             }
         }
@@ -66,7 +88,11 @@
         @for (int i = ViewBag.CurrentPage + 1; i <= ViewBag.CurrentPage + 2 && i < ViewBag.TotalPages; i++)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                <a class="page-link" asp-action="Index" asp-route-page="@i"
+                   asp-route-bookTitleFilter="@ViewBag.BookTitleFilter"
+                   asp-route-loanDateFilter="@ViewBag.LoanDateFilter">
+                    @i
+                </a>
             </li>
         }
 
@@ -80,7 +106,9 @@
         @if (ViewBag.CurrentPage < ViewBag.TotalPages)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-route-page="@ViewBag.TotalPages">@ViewBag.TotalPages</a>
+                <a class="page-link" asp-action="Index" asp-route-page="@ViewBag.TotalPages" 
+                asp-route-bookTitleFilter="@ViewBag.BookTitleFilter"
+                   asp-route-loanDateFilter="@ViewBag.LoanDateFilter">@ViewBag.TotalPages</a>                
             </li>
         }
     </ul>

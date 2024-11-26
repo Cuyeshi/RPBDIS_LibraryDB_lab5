@@ -14,20 +14,34 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         }
 
         // GET: Genres
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string nameFilter, int page = 1)
         {
             int pageSize = 10; // Количество записей на странице
-            var totalGenres = _context.Genres.Count(); // Общее количество записей
-            var genres = _context.Genres
+
+            // Фильтрация
+            var query = _context.Genres.AsQueryable();
+            if (!string.IsNullOrEmpty(nameFilter))
+            {
+                query = query.Where(g => g.Name.Contains(nameFilter));
+            }
+
+            // Пагинация
+            int totalGenres = query.Count();
+            var genres = query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
+            // Передача данных для отображения
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = (int)Math.Ceiling(totalGenres / (double)pageSize);
+            ViewBag.NameFilter = nameFilter;
 
             return View(genres);
         }
+
+
+
 
         // GET: Genres/Create
         public IActionResult Create()

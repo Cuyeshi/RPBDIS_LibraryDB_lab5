@@ -11,6 +11,20 @@
     <a asp-action="Back" class="btn btn-secondary">Вернуться на главную</a>
 </p>
 
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="form-row">
+        <div class="col">
+            <input type="text" name="nameFilter" class="form-control" placeholder="Название жанра"
+                   value="@ViewBag.NameFilter" />
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-success">Применить</button>
+            <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
+        </div>
+    </div>
+</form>
+
+
 <table class="table">
     <thead>
         <tr>

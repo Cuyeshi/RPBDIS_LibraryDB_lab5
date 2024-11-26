@@ -5,6 +5,58 @@
     <a asp-action="Back" class="btn btn-secondary">Вернуться на главную</a>
 </p>
 
+<!-- Форма для фильтрации -->
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" name="titleFilter" value="@ViewBag.TitleFilter" class="form-control" placeholder="Название книги" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="authorFilter" value="@ViewBag.AuthorFilter" class="form-control" placeholder="Автор" />
+        </div>
+        <div class="col-md-3">
+            <select name="genreId" class="form-control">
+                <option value="">Все жанры</option>
+                @foreach (var genre in (IEnumerable<SelectListItem>)ViewBag.Genres)
+                {
+                    if (ViewBag.SelectedGenreId?.ToString() == genre.Value)
+                    {
+                        <option value="@genre.Value" selected>@genre.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@genre.Value">@genre.Text</option>
+                    }
+                }
+
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="publisherId" class="form-control">
+                <option value="">Все издатели</option>             
+                @foreach (var publisher in (IEnumerable<SelectListItem>)ViewBag.Publishers)
+                {
+                    if (ViewBag.SelectedPublisherId?.ToString() == publisher.Value)
+                    {
+                        <option value="@publisher.Value" selected>@publisher.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@publisher.Value">@publisher.Text</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <button type="submit" class="btn btn-success">Применить</button>
+            <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
+        </div>
+    </div>
+</form>
+
+<!-- Таблица с результатами -->
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -36,13 +88,20 @@
     </tbody>
 </table>
 
+
 <nav>
     <ul class="pagination">
         <!-- Ссылка на первую страницу -->
         @if (ViewBag.CurrentPage > 1)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-route-page="1">1</a>
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="1"
+                   asp-route-titleFilter="@ViewBag.TitleFilter"
+                   asp-route-authorFilter="@ViewBag.AuthorFilter"
+                   asp-route-genreId="@ViewBag.SelectedGenreId"
+                   asp-route-publisherId="@ViewBag.SelectedPublisherId">1</a>
             </li>
             @if (ViewBag.CurrentPage > 3)
             {
@@ -58,7 +117,13 @@
             if (i > 1)
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@i"
+                       asp-route-titleFilter="@ViewBag.TitleFilter"
+                       asp-route-authorFilter="@ViewBag.AuthorFilter"
+                       asp-route-genreId="@ViewBag.SelectedGenreId"
+                       asp-route-publisherId="@ViewBag.SelectedPublisherId">@i</a>
                 </li>
             }
         }
@@ -72,7 +137,13 @@
         @for (int i = ViewBag.CurrentPage + 1; i <= ViewBag.CurrentPage + 2 && i < ViewBag.TotalPages; i++)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="@i"
+                   asp-route-titleFilter="@ViewBag.TitleFilter"
+                   asp-route-authorFilter="@ViewBag.AuthorFilter"
+                   asp-route-genreId="@ViewBag.SelectedGenreId"
+                   asp-route-publisherId="@ViewBag.SelectedPublisherId">@i</a>
             </li>
         }
 
@@ -86,9 +157,16 @@
         @if (ViewBag.CurrentPage < ViewBag.TotalPages)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-route-page="@ViewBag.TotalPages">@ViewBag.TotalPages</a>
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="@ViewBag.TotalPages"
+                   asp-route-titleFilter="@ViewBag.TitleFilter"
+                   asp-route-authorFilter="@ViewBag.AuthorFilter"
+                   asp-route-genreId="@ViewBag.SelectedGenreId"
+                   asp-route-publisherId="@ViewBag.SelectedPublisherId">@ViewBag.TotalPages</a>
             </li>
         }
     </ul>
 </nav>
+
 

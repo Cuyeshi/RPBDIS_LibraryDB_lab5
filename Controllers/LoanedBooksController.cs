@@ -14,24 +14,39 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
             _context = context;
         }
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string bookTitleFilter, DateTime? loanDateFilter, int page = 1)
         {
-            //var loanedBooks = _context.LoanedBooks.Include(lb => lb.Book).ThenInclude(b => b.Genre).ToList();
-
             int pageSize = 10; // Количество записей на странице
-            var totalLoanedBooks = _context.LoanedBooks.Count(); // Общее количество записей
-            var loanedBooks = _context.LoanedBooks
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
+
+            // Фильтрация
+            var query = _context.LoanedBooks
                 .Include(lb => lb.Book)
                 .ThenInclude(b => b.Genre)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(bookTitleFilter))
+            {
+                query = query.Where(lb => lb.Book.Title.Contains(bookTitleFilter));
+            }
+            
+
+            // Пагинация
+            int totalLoanedBooks = query.Count();
+            var loanedBooks = query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
 
+            // Передача данных для отображения
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = (int)Math.Ceiling(totalLoanedBooks / (double)pageSize);
+            ViewBag.BookTitleFilter = bookTitleFilter;
+            ViewBag.LoanDateFilter = loanDateFilter?.ToString("yyyy-MM-dd");
 
             return View(loanedBooks);
         }
+
+
 
         // GET: Create
         public IActionResult Create()

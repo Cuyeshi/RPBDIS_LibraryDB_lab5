@@ -16,17 +16,50 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         }
 
         // GET: Books
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string titleFilter, string authorFilter, int? genreId, int? publisherId, int page = 1)
         {
             int pageSize = 10; // Количество записей на странице
-            var totalItems = _context.Books.Count(); // Общее количество записей
-            var books = _context.Books
+
+            // Базовый запрос
+            var booksQuery = _context.Books
+                .Include(b => b.Genre)
+                .Include(b => b.Publisher)
+                .AsQueryable();
+
+            // Применение фильтров
+            if (!string.IsNullOrWhiteSpace(titleFilter))
+            {
+                booksQuery = booksQuery.Where(b => b.Title.Contains(titleFilter));
+            }
+            if (!string.IsNullOrWhiteSpace(authorFilter))
+            {
+                booksQuery = booksQuery.Where(b => b.Author.Contains(authorFilter));
+            }
+            if (genreId.HasValue)
+            {
+                booksQuery = booksQuery.Where(b => b.GenreId == genreId);
+            }
+            if (publisherId.HasValue)
+            {
+                booksQuery = booksQuery.Where(b => b.PublisherId == publisherId);
+            }
+
+            // Пагинация
+            var totalItems = booksQuery.Count();
+            var books = booksQuery
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
+            // Передача данных в представление
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+            ViewBag.Genres = new SelectList(_context.Genres, "GenreId", "Name");
+            ViewBag.Publishers = new SelectList(_context.Publishers, "PublisherId", "Name");
+            ViewBag.TitleFilter = titleFilter;
+            ViewBag.AuthorFilter = authorFilter;
+            ViewBag.SelectedGenreId = genreId;
+            ViewBag.SelectedPublisherId = publisherId;
 
             return View(books);
         }
@@ -144,18 +177,14 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
                 return NotFound();
             }
 
-            // Проверяем наличие связанных данных
-            var hasLoanedBooks = _context.LoanedBooks.Any(lb => lb.BookId == id);
-            if (hasLoanedBooks)
-            {
-                ModelState.AddModelError("", "Невозможно удалить книгу, так как она связана с выданными книгами.");
-                return View(book); // Возвращаем представление с ошибкой
-            }
+            // Для отладки
+            Console.WriteLine($"Удаляем книгу с ID {id}");
 
-            _context.Books.Remove(book); // Удаляем книгу
-            await _context.SaveChangesAsync(); // Сохраняем изменения
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index)); // Перенаправляем на список книг
+            Console.WriteLine($"Книга с ID {id} успешно удалена.");
+            return RedirectToAction(nameof(Index));
         }
     }
 }
