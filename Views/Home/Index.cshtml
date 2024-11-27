@@ -1,15 +1,27 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Добро пожаловать</h1>
-    <p>Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <h1 class="display-4">Добро пожаловать</h1>
+        <p>Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
 
-    <!-- Кнопки навигации -->
-    <div class="mt-4">
-        <a href="/Books" class="btn btn-primary btn-lg m-2">Books</a>
-        <a href="/Genres" class="btn btn-secondary btn-lg m-2">Genres</a>
-        <a href="/LoanedBooks" class="btn btn-success btn-lg m-2">Loaned Books</a>
-    </div>
+        <!-- Кнопки навигации -->
+        <div class="mt-4">
+            <a href="/Books" class="btn btn-primary btn-lg m-2">Books</a>
+            <a href="/Genres" class="btn btn-secondary btn-lg m-2">Genres</a>
+            <a href="/LoanedBooks" class="btn btn-success btn-lg m-2">Loaned Books</a>
+        </div>
+    }
+    else
+    {
+        <h3>Действия на данном сайте будут доступны лишь после авторизации</h3>
+    }
+
+    
 </div>
