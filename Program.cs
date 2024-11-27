@@ -1,16 +1,66 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using RPBDIS_LibraryDB_lab5.Models; // Убедитесь, что этот namespace соответствует вашему проекту
+using RPBDIS_LibraryDB_lab5.Data;
+using RPBDIS_LibraryDB_lab5.Models; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ namespace пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Добавляем сервисы для работы с контроллерами и представлениями
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 builder.Services.AddControllersWithViews();
 
-// Регистрируем контекст базы данных (замените строку подключения на вашу)
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ)
 builder.Services.AddDbContext<LibraryDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Р РµРіРёСЃС‚СЂР°С†РёСЏ ApplicationDbContext РґР»СЏ Identity
+builder.Services.AddDbContext<RPBDIS_LibraryDB_lab5Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RPBDIS_LibraryDB_lab5ContextConnection")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+})
+.AddEntityFrameworkStores<RPBDIS_LibraryDB_lab5Context>();
+
+
+
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login"; // РџСѓС‚СЊ РґР»СЏ РїРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёСЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РІС…РѕРґР°
+    options.AccessDeniedPath = "/Account/AccessDenied"; // РџСѓС‚СЊ РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ СЃ РѕРіСЂР°РЅРёС‡РµРЅРёРµРј РґРѕСЃС‚СѓРїР°
+});
+
+//builder.Services.AddRazorPages(options =>
+//{
+//    options.Conventions.AllowAnonymousToPage("/Identity/Account/Login");
+//    options.Conventions.AllowAnonymousToPage("/Identity/Account/Register");
+//    options.Conventions.AllowAnonymousToPage("/Identity/Account/AccessDenied");
+//});
+
+//builder.Services.AddControllersWithViews(options =>
+//{
+//    // Р”РѕР±Р°РІР»СЏРµРј РіР»РѕР±Р°Р»СЊРЅСѓСЋ РїРѕР»РёС‚РёРєСѓ Р°РІС‚РѕСЂРёР·Р°С†РёРё
+//    var policy = new AuthorizationPolicyBuilder()
+//        .RequireAuthenticatedUser()
+//        .Build();
+//    options.Filters.Add(new Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter(policy));
+//});
+
+// Р›РѕРіРёСЂРѕРІР°РЅРёРµ
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
+builder.Services.AddRazorPages();
+//////////////////////////////////////////////////////////////////////////////////////
 
 var app = builder.Build();
 
@@ -26,11 +76,22 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
+//app.Use(async (context, next) =>
+//{
+//    if (string.IsNullOrEmpty(context.Request.Path) || context.Request.Path == "/")
+//    {
+//        context.Response.Redirect("/Identity/Account/Login");
+//        return;
+//    }
+//    await next();
+//});
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapRazorPages();
 
 app.Run();

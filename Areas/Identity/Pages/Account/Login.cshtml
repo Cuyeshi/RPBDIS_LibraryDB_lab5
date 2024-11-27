@@ -1,0 +1,42 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                @Html.AntiForgeryToken() <!-- Добавляем защитный токен -->
+
+                <h2>Use a local account to log in.</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input name="Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label for="Email" class="form-label">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input name="Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label for="Password" class="form-label">Password</label>
+                </div>
+                <div>
+                    <label for="RememberMe" class="form-label">
+                        <input class="form-check-input" type="checkbox" name="RememberMe" />
+                        Remember me
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
