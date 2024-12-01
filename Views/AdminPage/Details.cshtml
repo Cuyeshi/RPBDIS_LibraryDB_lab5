@@ -1,0 +1,17 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityUser
+@using RPBDIS_LibraryDB_lab5.Models
+
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Детали пользователя</h1>
+
+<div>
+    <h4>Имя пользователя: @Model.UserName</h4>
+    <h4>Email: @Model.Email</h4>
+    <h4>Роли: @string.Join(", ", ViewBag.Roles as IList<string>)</h4>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Редактировать</a>

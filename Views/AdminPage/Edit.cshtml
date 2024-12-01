@@ -1,0 +1,32 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityUser
+@using RPBDIS_LibraryDB_lab5.Models
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Редактировать пользователя</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Роли</label>
+        @foreach (var role in ViewBag.AllRoles)
+        {
+            <div class="form-check">
+                <input type="checkbox" name="roles" value="@role.Name"
+                @(ViewBag.UserRoles.Contains(role.Name) ? "checked" : "") class="form-check-input" />
+                <label class="form-check-label">@role.Name</label>
+            </div>
+        }
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+</form>

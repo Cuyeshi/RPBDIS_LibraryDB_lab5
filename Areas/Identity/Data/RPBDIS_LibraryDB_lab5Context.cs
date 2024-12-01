@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RPBDIS_LibraryDB_lab5.Models;
 
 namespace RPBDIS_LibraryDB_lab5.Data;
 

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<(Microsoft.AspNetCore.Identity.IdentityUser user, IList<string> roles)>
+@using RPBDIS_LibraryDB_lab5.Models
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Пользователи</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Создать нового пользователя</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя пользователя</th>
+            <th>Email</th>
+            <th>Роли</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.user.UserName</td>
+                <td>@item.user.Email</td>
+                <td>@string.Join(", ", item.roles)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.user.Id" class="btn btn-primary">Редактировать</a>
+                    <a asp-action="Details" asp-route-id="@item.user.Id" class="btn btn-info">Детали</a>
+                    <form asp-action="Delete" asp-route-id="@item.user.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

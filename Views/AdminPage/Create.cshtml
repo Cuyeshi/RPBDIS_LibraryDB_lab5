@@ -1,0 +1,34 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityUser
+@using RPBDIS_LibraryDB_lab5.Models
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Создать пользователя</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Password">Пароль</label>
+        <input type="password" name="password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Role">Роль</label>
+        <select name="role" class="form-control">
+            <option value="">Выберите роль</option>
+            @foreach (var role in ViewBag.Roles)
+            {
+                <option value="@role.Name">@role.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Создать</button>
+</form>
