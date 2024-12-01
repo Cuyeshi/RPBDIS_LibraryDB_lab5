@@ -179,5 +179,15 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Back()
+        {
+            return RedirectToAction("Index", "AdminPage");
+        }
+        
+        public IActionResult BackToHome()
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

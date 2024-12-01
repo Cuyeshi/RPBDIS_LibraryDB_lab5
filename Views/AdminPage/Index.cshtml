@@ -9,6 +9,7 @@
 
 <p>
     <a asp-action="Create" class="btn btn-success">Создать нового пользователя</a>
+    <a asp-action="BackToHome" class="btn btn-secondary">Вернуться на главную</a>
 </p>
 
 <table class="table">
@@ -29,7 +30,7 @@
                 <td>@string.Join(", ", item.roles)</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.user.Id" class="btn btn-primary">Редактировать</a>
-                    <a asp-action="Details" asp-route-id="@item.user.Id" class="btn btn-info">Детали</a>
+                    <!--  <a asp-action="Details" asp-route-id="@item.user.Id" class="btn btn-info">Детали</a> -->
                     <form asp-action="Delete" asp-route-id="@item.user.Id" method="post" style="display:inline;">
                         <button type="submit" class="btn btn-danger">Удалить</button>
                     </form>
