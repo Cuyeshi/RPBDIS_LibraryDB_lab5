@@ -4,11 +4,11 @@ using RPBDIS_LibraryDB_lab5.Models;
 
 namespace RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers
 {
-    public class EmployeesController : Controller
+    public class PersonnelDepartmentController : Controller
     {
         private readonly LibraryDbContext _context;
 
-        public EmployeesController(LibraryDbContext context)
+        public PersonnelDepartmentController(LibraryDbContext context)
         {
             _context = context;
         }

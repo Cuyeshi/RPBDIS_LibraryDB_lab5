@@ -9,7 +9,7 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <h1 class="display-4">Добро пожаловать</h1>
-        <p>Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
+        <p style="font-size: 20px">Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
 
         <!-- Кнопки навигации -->
         <div class="mt-4">
@@ -19,7 +19,19 @@
         </div>
 
         <div class="mt-4">
-            <a asp-controller="Employees" asp-action="Index" class="btn btn-secondary">Отдел кадров</a>
+            <a href="/Employees" class="btn btn-danger btn-lg m-2">Employees</a>
+            <a href="/Publishers" class="btn btn-warning btn-lg m-2">Publishers</a>
+            <a href="/Readers" class="btn btn-secondary btn-lg m-2" style="background-color: purple; border-color: purple;">Readers</a>
+        </div>
+
+        <div style="width: 100%; text-align: center;">
+            <p></p>
+            <hr style="display: inline-block; width: 60%; border: 0; border-top: 5px solid gray;">
+        </div>
+        <p style="font-size: 20px">Вы также можете выбрать одну из дополнительных опций просмотра таблиц</p>
+
+        <div class="mt-4">
+            <a asp-controller="PersonnelDepartment" asp-action="Index" class="btn btn-secondary">Отдел кадров</a>
             <a asp-controller="Catalog" asp-action="Index" class="btn btn-secondary">Каталог</a>
             <a asp-controller="BooksOnHands" asp-action="Index" class="btn btn-secondary">Книги на руках</a>
             <a asp-controller="FallReaders" asp-action="Index" class="btn btn-secondary">Просроченные книги</a>

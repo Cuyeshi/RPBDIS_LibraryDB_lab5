@@ -1,0 +1,17 @@
+﻿@model RPBDIS_LibraryDB_lab5.Models.Reader
+
+<h2>Удалить читателя</h2>
+
+<p>Вы уверены, что хотите удалить следующего читателя?</p>
+
+<div>
+    <p><strong>Имя:</strong> @Model.FullName</p>
+    <p><strong>Пол:</strong> @Model.Gender</p>
+    <p><strong>Адрес:</strong> @Model.Address</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="ReaderId" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

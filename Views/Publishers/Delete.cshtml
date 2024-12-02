@@ -1,0 +1,19 @@
+﻿@model RPBDIS_LibraryDB_lab5.Models.Publisher
+
+<h2>Удалить издателя</h2>
+
+<p>Вы уверены, что хотите удалить издателя "@Model.Name"?</p>
+
+<dl class="row">
+    <dt class="col-sm-2">Город</dt>
+    <dd class="col-sm-10">@Model.City</dd>
+
+    <dt class="col-sm-2">Адрес</dt>
+    <dd class="col-sm-10">@Model.Address</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="PublisherId" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

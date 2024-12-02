@@ -1,0 +1,19 @@
+﻿@model RPBDIS_LibraryDB_lab5.Models.Employee
+
+<h2>Добавить сотрудника</h2>
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>ФИО</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Должность</label>
+        <input asp-for="Position" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Дата найма</label>
+        <input asp-for="HireDate" type="date" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

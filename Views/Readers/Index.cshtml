@@ -1,0 +1,112 @@
+﻿@model IEnumerable<RPBDIS_LibraryDB_lab5.Models.Reader>
+
+<h1>Читатели</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добавить читателя</a>
+    <a asp-action="Back" class="btn btn-secondary">Вернуться на главную</a>
+</p>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" name="nameFilter" value="@ViewBag.NameFilter" class="form-control" placeholder="Имя" />
+        </div>
+        <div class="col-md-3">
+            <select name="genderFilter" class="form-control">
+                <option value="">Все</option>
+                <option value="M" selected="@(ViewBag.GenderFilter == "M" ? "selected" : null)">Мужской</option>
+                <option value="F" selected="@(ViewBag.GenderFilter == "F" ? "selected" : null)">Женский</option>
+            </select>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-success">Применить</button>
+            <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Дата рождения</th>
+            <th>Пол</th>
+            <th>Адрес</th>
+            <th>Телефон</th>
+            <th>Паспорт</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reader in Model)
+        {
+            <tr>
+                <td>@reader.FullName</td>
+                <td>@reader.BirthDate.ToString("dd.MM.yyyy")</td>
+                <td>@reader.Gender</td>
+                <td>@reader.Address</td>
+                <td>@reader.Phone</td>
+                <td>@reader.Passport</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@reader.ReaderId" class="btn btn-warning">Редактировать</a>
+                    <a asp-action="Delete" asp-route-id="@reader.ReaderId" class="btn btn-danger">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav>
+    <ul class="pagination">
+        
+        <!-- Первая страница -->
+        @if (ViewBag.CurrentPage > 3)
+        {
+            <li class="page-item">
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="1"
+                   asp-route-nameFilter="@ViewBag.NameFilter"
+                   asp-route-genderFilter="@ViewBag.GenderFilter">1</a>
+            </li>
+            @if (ViewBag.CurrentPage > 4)
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            }
+        }
+
+        <!-- Страницы вокруг текущей -->
+        @for (int i = Math.Max(1, ViewBag.CurrentPage - 2); i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="@i"
+                   asp-route-nameFilter="@ViewBag.NameFilter"
+                   asp-route-genderFilter="@ViewBag.GenderFilter">@i</a>
+            </li>
+        }
+
+        <!-- Последняя страница -->
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages - 2)
+        {
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages - 3)
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            }
+            <li class="page-item">
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="@(ViewBag.TotalPages)"
+                   asp-route-nameFilter="@ViewBag.NameFilter"
+                   asp-route-genderFilter="@ViewBag.GenderFilter">@ViewBag.TotalPages</a>
+            </li>
+        }
+
+    </ul>
+</nav>
