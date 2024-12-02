@@ -1,57 +1,52 @@
 ﻿@model IEnumerable<RPBDIS_LibraryDB_lab5.Models.Book>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Добавить книгу</a>
-    <a asp-action="Back" class="btn btn-secondary">Вернуться на главную</a>
-</p>
+@{
+    ViewData["Title"] = "Каталог книг";
+}
+
+<h2>Каталог книг</h2>
 
 <!-- Форма для фильтрации -->
 <form method="get" asp-action="Index" class="mb-3">
     <div class="row">
         <div class="col-md-3">
-            <input type="text" name="titleFilter" value="@ViewBag.TitleFilter" class="form-control" placeholder="Название книги" />
-        </div>
-        <div class="col-md-3">
-            <input type="text" name="authorFilter" value="@ViewBag.AuthorFilter" class="form-control" placeholder="Автор" />
-        </div>
-        <div class="col-md-3">
             <select name="genreId" class="form-control">
                 <option value="">Все жанры</option>
-                @foreach (var genre in (IEnumerable<SelectListItem>)ViewBag.Genres)
+                @if (ViewBag.Genres != null)
                 {
-                    if (ViewBag.SelectedGenreId?.ToString() == genre.Value)
+                    foreach (var genre in (IEnumerable<SelectListItem>)ViewBag.Genres)
                     {
-                        <option value="@genre.Value" selected>@genre.Text</option>
-                    }
-                    else
-                    {
-                        <option value="@genre.Value">@genre.Text</option>
+                        <option value="@genre.Value"
+                                selected="@(ViewBag.SelectedGenreId?.ToString() == genre.Value ? "selected" : null)">
+                            @genre.Text
+                        </option>
                     }
                 }
-
             </select>
         </div>
         <div class="col-md-3">
             <select name="publisherId" class="form-control">
-                <option value="">Все издатели</option>             
-                @foreach (var publisher in (IEnumerable<SelectListItem>)ViewBag.Publishers)
+                <option value="">Все издательства</option>
+                @if (ViewBag.Publishers != null)
                 {
-                    if (ViewBag.SelectedPublisherId?.ToString() == publisher.Value)
+                    foreach (var publisher in (IEnumerable<SelectListItem>)ViewBag.Publishers)
                     {
-                        <option value="@publisher.Value" selected>@publisher.Text</option>
-                    }
-                    else
-                    {
-                        <option value="@publisher.Value">@publisher.Text</option>
+                        <option value="@publisher.Value"
+                                selected="@(ViewBag.SelectedPublisherId?.ToString() == publisher.Value ? "selected" : null)">
+                            @publisher.Text
+                        </option>
                     }
                 }
             </select>
         </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col">
-            <button type="submit" class="btn btn-success">Применить</button>
-            <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
+        <div class="col-md-2">
+            <input type="number" name="minPrice" step="0.01" class="form-control" placeholder="Мин. цена" />
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="maxPrice" step="0.01" class="form-control" placeholder="Макс. цена" />
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Применить</button>
         </div>
     </div>
 </form>
@@ -63,10 +58,8 @@
             <th>Название</th>
             <th>Автор</th>
             <th>Жанр</th>
-            <th>Издатель</th>
+            <th>Издательство</th>
             <th>Цена</th>
-            <th>Год издания</th>
-            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -78,19 +71,14 @@
                 <td>@book.Genre?.Name</td>
                 <td>@book.Publisher?.Name</td>
                 <td>@book.Price</td>
-                <td>@book.PublishYear</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@book.BookId" class="btn btn-warning">Редактировать</a>
-                    <a asp-action="Delete" asp-route-id="@book.BookId" class="btn btn-danger">Удалить</a>
-                </td>
             </tr>
         }
     </tbody>
 </table>
 
-
+<!-- Пагинация -->
 <nav>
-    <ul class="pagination">
+    <ul class="pagination justify-content-center">
         <!-- Ссылка на первую страницу -->
         @if (ViewBag.CurrentPage > 1)
         {
@@ -98,16 +86,14 @@
                 <a class="page-link"
                    asp-action="Index"
                    asp-route-page="1"
-                   asp-route-titleFilter="@ViewBag.TitleFilter"
-                   asp-route-authorFilter="@ViewBag.AuthorFilter"
                    asp-route-genreId="@ViewBag.SelectedGenreId"
-                   asp-route-publisherId="@ViewBag.SelectedPublisherId">1</a>
+                   asp-route-publisherId="@ViewBag.SelectedPublisherId"
+                   asp-route-priceMin="@ViewBag.PriceMin"
+                   asp-route-priceMax="@ViewBag.PriceMax">1</a>
             </li>
             @if (ViewBag.CurrentPage > 3)
             {
-                <li class="page-item disabled">
-                    <span class="page-link">...</span>
-                </li>
+                <li class="page-item disabled"><span class="page-link">...</span></li>
             }
         }
 
@@ -120,10 +106,10 @@
                     <a class="page-link"
                        asp-action="Index"
                        asp-route-page="@i"
-                       asp-route-titleFilter="@ViewBag.TitleFilter"
-                       asp-route-authorFilter="@ViewBag.AuthorFilter"
                        asp-route-genreId="@ViewBag.SelectedGenreId"
-                       asp-route-publisherId="@ViewBag.SelectedPublisherId">@i</a>
+                       asp-route-publisherId="@ViewBag.SelectedPublisherId"
+                       asp-route-priceMin="@ViewBag.PriceMin"
+                       asp-route-priceMax="@ViewBag.PriceMax">@i</a>
                 </li>
             }
         }
@@ -140,19 +126,18 @@
                 <a class="page-link"
                    asp-action="Index"
                    asp-route-page="@i"
-                   asp-route-titleFilter="@ViewBag.TitleFilter"
-                   asp-route-authorFilter="@ViewBag.AuthorFilter"
                    asp-route-genreId="@ViewBag.SelectedGenreId"
-                   asp-route-publisherId="@ViewBag.SelectedPublisherId">@i</a>
+                   asp-route-publisherId="@ViewBag.SelectedPublisherId"
+                   asp-route-priceMin="@ViewBag.PriceMin"
+                   asp-route-priceMax="@ViewBag.PriceMax">@i</a>
             </li>
         }
+        
 
         <!-- Ссылка на последнюю страницу -->
         @if (ViewBag.CurrentPage < ViewBag.TotalPages - 2)
         {
-            <li class="page-item disabled">
-                <span class="page-link">...</span>
-            </li>
+            <li class="page-item disabled"><span class="page-link">...</span></li>
         }
         @if (ViewBag.CurrentPage < ViewBag.TotalPages)
         {
@@ -160,13 +145,12 @@
                 <a class="page-link"
                    asp-action="Index"
                    asp-route-page="@ViewBag.TotalPages"
-                   asp-route-titleFilter="@ViewBag.TitleFilter"
-                   asp-route-authorFilter="@ViewBag.AuthorFilter"
                    asp-route-genreId="@ViewBag.SelectedGenreId"
-                   asp-route-publisherId="@ViewBag.SelectedPublisherId">@ViewBag.TotalPages</a>
+                   asp-route-publisherId="@ViewBag.SelectedPublisherId"
+                   asp-route-priceMin="@ViewBag.PriceMin"
+                   asp-route-priceMax="@ViewBag.PriceMax">@ViewBag.TotalPages</a>
             </li>
         }
     </ul>
 </nav>
-
 

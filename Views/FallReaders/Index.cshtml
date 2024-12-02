@@ -1,0 +1,92 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Просроченные возвраты";
+}
+
+<a asp-action="Back" class="btn btn-secondary">Вернуться на главную</a>
+<h2>Просроченные возвраты</h2>
+
+<!-- Форма фильтрации -->
+<form method="get" class="mb-4">
+    <div class="row">
+        
+        <div class="col-md-3">
+            <input type="date" name="returnDate" class="form-control" value="@ViewBag.ReturnDate?.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Поиск</button>
+        </div>
+        <div class="col-md-2">
+            <a href="@Url.Action("Index", new { readerName = "", returnDate = "" })" class="btn btn-secondary w-100">Сбросить фильтры</a>
+        </div>
+    </div>
+</form>
+
+<!-- Таблица читателей с просроченными возвратами -->
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ФИО</th>
+            <th>Дата рождения</th>
+            <th>Пол</th>
+            <th>Адрес</th>
+            <th>Номер телефона</th>
+            <th>Паспортные данные</th>
+            <th>Книга</th>
+            <th>Дата возврата</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Reader.FullName</td>
+                <td>@item.Reader.BirthDate</td>
+                <td>@item.Reader.Gender</td>
+                <td>@item.Reader.Address</td>
+                <td>@item.Reader.Phone</td>
+                <td>@item.Reader.Passport</td>
+                <td>@item.LoanedBook.Book.Title</td>
+                <td>@item.LoanedBook.ReturnDate.ToString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<!-- Пагинация -->
+@if (ViewBag.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination justify-content-center">
+            
+            <!-- Страницы -->
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                if (i == 1 || i == ViewBag.TotalPages || (i >= ViewBag.CurrentPage - 2 && i <= ViewBag.CurrentPage + 2))
+                {
+                    if (i == ViewBag.CurrentPage)
+                    {
+                        <li class="page-item active">
+                            <span class="page-link">@i</span>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-readerName="@ViewBag.ReaderName">@i</a>
+                        </li>
+                    }
+                }
+                else if (i == 2 && ViewBag.CurrentPage > 4 || i == ViewBag.TotalPages - 1 && ViewBag.CurrentPage < ViewBag.TotalPages - 3)
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">...</span>
+                    </li>
+                }
+            }
+
+        </ul>
+    </nav>
+}

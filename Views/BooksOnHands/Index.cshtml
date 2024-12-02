@@ -1,0 +1,90 @@
+﻿@model IEnumerable<RPBDIS_LibraryDB_lab5.Models.LoanedBook>
+
+@{
+    ViewData["Title"] = "Книги на руках";
+}
+
+<a asp-action="Back" class="btn btn-secondary">Вернуться на главную</a>
+<h2>Книги на руках</h2>
+
+<!-- Форма фильтрации -->
+<form method="get" asp-action="Index" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" name="author" class="form-control" placeholder="Автор" value="@ViewBag.Author" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="genre" class="form-control" placeholder="Жанр" value="@ViewBag.Genre" />
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Применить</button>
+        </div>
+        <div class="col-md-2">
+            <a href="@Url.Action("Index", new { author = "", genre = "" })" class="btn btn-secondary w-100">Сбросить фильтры</a>
+        </div>
+    </div>
+</form>
+
+<!-- Таблица -->
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Название книги</th>
+            <th>Автор</th>
+            <th>Жанр</th>
+            <th>Дата выдачи</th>
+            <th>Срок возврата</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var loanedBook in Model)
+        {
+            <tr>
+                <td>@loanedBook.Book?.Title</td>
+                <td>@loanedBook.Book?.Author</td>
+                <td>@loanedBook.Book?.Genre?.Name</td>
+                <td>@loanedBook.LoanDate.ToString("yyyy-MM-dd")</td>
+                <td>@loanedBook.ReturnDate?.ToString("yyyy-MM-dd") ?? "Не указано"</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Пагинация -->
+@if (ViewBag.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination justify-content-center">
+            
+
+            <!-- Страницы -->
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                if (i == 1 || i == ViewBag.TotalPages || (i >= ViewBag.CurrentPage - 2 && i <= ViewBag.CurrentPage + 2))
+                {
+                    if (i == ViewBag.CurrentPage)
+                    {
+                        <li class="page-item active">
+                            <span class="page-link">@i</span>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i"
+                               asp-route-author="@ViewBag.Author" asp-route-genre="@ViewBag.Genre">@i</a>
+                        </li>
+                    }
+                }
+                else if (i == 2 && ViewBag.CurrentPage > 4 || i == ViewBag.TotalPages - 1 && ViewBag.CurrentPage < ViewBag.TotalPages - 3)
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">...</span>
+                    </li>
+                }
+            }
+
+            
+        </ul>
+    </nav>
+}

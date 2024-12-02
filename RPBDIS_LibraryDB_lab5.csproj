@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Views\Additional views\" />
   </ItemGroup>
 
 </Project>

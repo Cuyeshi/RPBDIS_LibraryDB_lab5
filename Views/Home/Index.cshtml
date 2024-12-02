@@ -14,8 +14,16 @@
         <!-- Кнопки навигации -->
         <div class="mt-4">
             <a href="/Books" class="btn btn-primary btn-lg m-2">Books</a>
-            <a href="/Genres" class="btn btn-secondary btn-lg m-2">Genres</a>
+            <a href="/Genres" class="btn btn-info btn-lg m-2">Genres</a>
             <a href="/LoanedBooks" class="btn btn-success btn-lg m-2">Loaned Books</a>
+        </div>
+
+        <div class="mt-4">
+            <a asp-controller="Employees" asp-action="Index" class="btn btn-secondary">Отдел кадров</a>
+            <a asp-controller="Catalog" asp-action="Index" class="btn btn-secondary">Каталог</a>
+            <a asp-controller="BooksOnHands" asp-action="Index" class="btn btn-secondary">Книги на руках</a>
+            <a asp-controller="FallReaders" asp-action="Index" class="btn btn-secondary">Просроченные книги</a>
+
         </div>
     }
     else

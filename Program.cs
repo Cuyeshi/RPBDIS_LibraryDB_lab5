@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ��������� ������� ��� ������ � ������������� � ���������������
 builder.Services.AddControllersWithViews();
-builder.Services.AddSession();
 
 // ������������ �������� ���� ������ (�������� ������ ����������� �� ����)
 builder.Services.AddDbContext<LibraryDbContext>(options =>
@@ -62,10 +61,6 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseSession();
-
-//app.UseDbInitializer();
 
 app.MapControllerRoute(
     name: "default",
