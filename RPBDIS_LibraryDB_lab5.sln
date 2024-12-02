@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPBDIS_LibraryDB_lab5", "RPBDIS_LibraryDB_lab5.csproj", "{898A0F90-B7FF-407B-B366-944416E10269}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsForLibraryDB_ASP_NET", "..\TestsForLibraryDB_ASP_NET\TestsForLibraryDB_ASP_NET.csproj", "{555AAC1D-27A9-4780-97AA-1B4ED887F415}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{898A0F90-B7FF-407B-B366-944416E10269}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898A0F90-B7FF-407B-B366-944416E10269}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{898A0F90-B7FF-407B-B366-944416E10269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{555AAC1D-27A9-4780-97AA-1B4ED887F415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{555AAC1D-27A9-4780-97AA-1B4ED887F415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{555AAC1D-27A9-4780-97AA-1B4ED887F415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{555AAC1D-27A9-4780-97AA-1B4ED887F415}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
