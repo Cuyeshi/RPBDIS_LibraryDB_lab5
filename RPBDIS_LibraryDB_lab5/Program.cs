@@ -1,17 +1,11 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RPBDIS_LibraryDB_lab5.Data;
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 
-// ��������� ������� ��� ������ � ������������� � ���������������
 builder.Services.AddControllersWithViews();
 
-// ������������ �������� ���� ������ (�������� ������ ����������� �� ����)
 builder.Services.AddDbContext<LibraryDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -35,15 +29,6 @@ builder.Services.AddRazorPages();
 //////////////////////////////////////////////////////////////////////////////////////
 
 var app = builder.Build();
-
-// Создание менеджера пользователей
-var passwordHasher = new PasswordHasher<IdentityUser>();
-
-// Генерация хэша пароля
-string hashedPassword = passwordHasher.HashPassword(null, "admin");
-
-// Вывод хэша пароля
-Console.WriteLine(hashedPassword);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
