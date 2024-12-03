@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using RPBDIS_LibraryDB_lab5.Data;
 using RPBDIS_LibraryDB_lab5.Models;
 
 namespace RPBDIS_LibraryDB_lab5.Controllers
 {
+    [Authorize()]
     public class EmployeesController : Controller
     {
         private readonly LibraryDbContext _context;

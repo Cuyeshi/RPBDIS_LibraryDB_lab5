@@ -13,7 +13,7 @@
             <input type="text" name="bookTitleFilter" class="form-control" placeholder="Название книги"
                    value="@ViewBag.BookTitleFilter" />
         </div>
-        
+
         <div class="col">
             <button type="submit" class="btn btn-success">Применить</button>
             <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
@@ -25,8 +25,10 @@
     <thead>
         <tr>
             <th>Книга</th>
+            <th>Читатель</th>
             <th>Дата выдачи</th>
             <th>Дата возврата</th>
+            <th>Сотрудник</th> <!-- Новый столбец -->
             <th>Действия</th>
         </tr>
     </thead>
@@ -35,8 +37,10 @@
         {
             <tr>
                 <td>@item.Book.Title</td>
+                <td>@item.Reader.FullName</td>
                 <td>@item.LoanDate.ToShortDateString()</td>
                 <td>@item.ReturnDate?.ToShortDateString()</td>
+                <td>@item.Employee.FullName</td> <!-- Новый столбец -->
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.LoanId" class="btn btn-warning">Редактировать</a>
                     <a asp-action="Delete" asp-route-id="@item.LoanId" class="btn btn-danger">Удалить</a>
@@ -45,6 +49,7 @@
         }
     </tbody>
 </table>
+
 
 <nav>
     <ul class="pagination">
@@ -108,9 +113,9 @@
         @if (ViewBag.CurrentPage < ViewBag.TotalPages)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-route-page="@ViewBag.TotalPages" 
-                asp-route-bookTitleFilter="@ViewBag.BookTitleFilter"
-                   asp-route-loanDateFilter="@ViewBag.LoanDateFilter">@ViewBag.TotalPages</a>                
+                <a class="page-link" asp-action="Index" asp-route-page="@ViewBag.TotalPages"
+                   asp-route-bookTitleFilter="@ViewBag.BookTitleFilter"
+                   asp-route-loanDateFilter="@ViewBag.LoanDateFilter">@ViewBag.TotalPages</a>
             </li>
         }
     </ul>

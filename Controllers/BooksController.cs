@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using RPBDIS_LibraryDB_lab5.Data;
 using RPBDIS_LibraryDB_lab5.Models;
 using System.Linq;
 
 namespace RPBDIS_LibraryDB_lab5.Controllers
 {
+    [Authorize()]
     public class BooksController : Controller
     {
         private readonly LibraryDbContext _context;

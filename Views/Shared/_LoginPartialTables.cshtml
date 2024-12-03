@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Books">Книги</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Genres">Жанры</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/LoanedBooks">Взятые книги</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Employees">Сотрудники</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Publishers">Издатели</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Readers">Читатели</a>
+    </li>
+}

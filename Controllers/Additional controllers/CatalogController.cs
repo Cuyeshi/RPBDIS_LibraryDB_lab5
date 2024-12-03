@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using RPBDIS_LibraryDB_lab5.Models;
+using RPBDIS_LibraryDB_lab5.Data;
 
 namespace RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers
 {

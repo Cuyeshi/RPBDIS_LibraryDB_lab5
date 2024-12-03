@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using RPBDIS_LibraryDB_lab5.Models;
 
-namespace RPBDIS_LibraryDB_lab5.Models
+namespace RPBDIS_LibraryDB_lab5.Data
 {
     public class LibraryDbContext : DbContext
     {
@@ -14,7 +15,7 @@ namespace RPBDIS_LibraryDB_lab5.Models
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Reader> Readers { get; set; }
 
-        
+
     }
 
 }

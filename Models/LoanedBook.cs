@@ -18,13 +18,11 @@ namespace RPBDIS_LibraryDB_lab5.Models
 
         public bool Returned { get; set; }
 
-        public string? Employee { get; set; }
-
         public int? EmployeeId { get; set; }
 
         public virtual Book? Book { get; set; }
 
-        public virtual Employee? EmployeeNavigation { get; set; }
+        public virtual Employee? Employee { get; set; }
 
         public virtual Reader? Reader { get; set; }
     }
