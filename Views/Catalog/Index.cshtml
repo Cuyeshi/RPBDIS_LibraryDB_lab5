@@ -4,6 +4,7 @@
     ViewData["Title"] = "Каталог книг";
 }
 
+<a asp-action="Back" class="btn btn-secondary">Вернуться на главную</a>
 <h2>Каталог книг</h2>
 
 <!-- Форма для фильтрации -->
@@ -40,13 +41,17 @@
             </select>
         </div>
         <div class="col-md-2">
-            <input type="number" name="minPrice" step="0.01" class="form-control" placeholder="Мин. цена" />
+            <input type="number" name="PriceMin" step="5" class="form-control" placeholder="Мин. цена" value="@ViewBag.PriceMin" />
         </div>
         <div class="col-md-2">
-            <input type="number" name="maxPrice" step="0.01" class="form-control" placeholder="Макс. цена" />
+            <input type="number" name="PriceMax" step="5" class="form-control" placeholder="Макс. цена" value="@ViewBag.PriceMax" />
         </div>
-        <div class="col-md-2">
-            <button type="submit" class="btn btn-primary">Применить</button>
+                
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <button type="submit" class="btn btn-success">Применить</button>
+            <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
         </div>
     </div>
 </form>

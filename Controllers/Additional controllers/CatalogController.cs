@@ -46,14 +46,15 @@ namespace RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers
             if (priceMin.HasValue)
             {
                 books = books.Where(b => b.Price >= priceMin.Value);
-                ViewBag.PriceMin = priceMin;
+                ViewBag.PriceMin = priceMin.Value; // Сохраняем для отображения
             }
 
             if (priceMax.HasValue)
             {
                 books = books.Where(b => b.Price <= priceMax.Value);
-                ViewBag.PriceMax = priceMax;
+                ViewBag.PriceMax = priceMax.Value; // Сохраняем для отображения
             }
+
 
             // Пагинация
             int pageSize = 10;
@@ -94,6 +95,11 @@ namespace RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers
 
             var books = await query.ToListAsync();
             return View("Index", books);
+        }
+
+        public IActionResult Back()
+        {
+            return RedirectToAction("Index", "Home");
         }
     }
 }

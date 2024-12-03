@@ -15,12 +15,12 @@
         </div>
         <div class="col-md-3">
             <input type="text" name="genre" class="form-control" placeholder="Жанр" value="@ViewBag.Genre" />
-        </div>
-        <div class="col-md-2">
-            <button type="submit" class="btn btn-primary w-100">Применить</button>
-        </div>
-        <div class="col-md-2">
-            <a href="@Url.Action("Index", new { author = "", genre = "" })" class="btn btn-secondary w-100">Сбросить фильтры</a>
+        </div>        
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <button type="submit" class="btn btn-success">Применить</button>
+            <a asp-action="Index" class="btn btn-secondary">Сбросить</a>
         </div>
     </div>
 </form>
