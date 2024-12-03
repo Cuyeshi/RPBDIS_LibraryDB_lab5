@@ -29,8 +29,8 @@ jobs:
 
       # Восстанавливаем зависимости
       - name: Restore dependencies
-        run: dotnet restore RPBDIS_LibraryDB_lab5/RPBDIS_LibraryDB_lab5.sln
+        run: dotnet restore RPBDIS_LibraryDB_lab5.sln
 
       # Компилируем проект
       - name: Build project
-        run: dotnet build RPBDIS_LibraryDB_lab5/RPBDIS_LibraryDB_lab5.sln --configuration Release --no-restore
+        run: dotnet build RPBDIS_LibraryDB_lab5.sln --configuration Release --no-restore
