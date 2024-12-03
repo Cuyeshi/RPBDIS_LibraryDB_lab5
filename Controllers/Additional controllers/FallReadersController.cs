@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RPBDIS_LibraryDB_lab5.Data;
 
 namespace RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers
 {
+    [Authorize()]
     public class FallReadersController : Controller
     {
         private readonly LibraryDbContext _context;
