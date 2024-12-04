@@ -628,3 +628,4 @@ C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\ref\TestsForLibraryDB_ASP_NET.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Moq.EntityFrameworkCore.dll
+C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.sourcelink.json

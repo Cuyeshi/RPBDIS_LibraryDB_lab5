@@ -44,7 +44,7 @@
                 <td>@loanedBook.Book?.Author</td>
                 <td>@loanedBook.Book?.Genre?.Name</td>
                 <td>@loanedBook.LoanDate.ToString("yyyy-MM-dd")</td>
-                <td>@loanedBook.ReturnDate?.ToString("yyyy-MM-dd") ?? "Не указано"</td>
+                <td>@loanedBook.ReturnDate.ToString()</td>
             </tr>
         }
     </tbody>
