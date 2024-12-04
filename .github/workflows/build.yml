@@ -1,0 +1,36 @@
+name: Build .NET Project
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        dotnet-version: ['8.0.x']
+
+    steps:
+      # Проверяем репозиторий
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Устанавливаем .NET SDK
+      - name: Setup .NET SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      # Восстанавливаем зависимости
+      - name: Restore dependencies
+        run: dotnet restore RPBDIS_LibraryDB_lab5.sln
+
+      # Компилируем проект
+      - name: Build project
+        run: dotnet build RPBDIS_LibraryDB_lab5.sln --configuration Release --no-restore
