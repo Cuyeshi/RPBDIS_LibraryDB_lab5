@@ -53,32 +53,35 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
 
 
 
-        // GET: Create
+        // GET: LoanedBooks/Create
         public IActionResult Create()
         {
-            ViewBag.Books = new SelectList(_context.Books, "BookId", "Title");
+            ViewData["Books"] = new SelectList(_context.Books, "BookId", "Title");
+            ViewData["Readers"] = new SelectList(_context.Readers, "ReaderId", "FullName");
+            ViewData["Employees"] = new SelectList(_context.Employees, "EmployeeId", "FullName");
             return View();
         }
 
-        public IActionResult Back()
-        {
-            return RedirectToAction("Index", "Home");
-        }
 
-        // POST: Create
+
+        // POST: LoanedBooks/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(LoanedBook loanedBook)
+        public async Task<IActionResult> Create([Bind("BookId,ReaderId,LoanDate,ReturnDate,Returned,EmployeeId")] LoanedBook loanedBook)
         {
             if (ModelState.IsValid)
             {
-                _context.LoanedBooks.Add(loanedBook);
-                _context.SaveChanges();
+                Console.WriteLine($"BookId: {loanedBook.BookId}, EmployeeId: {loanedBook.EmployeeId}");
+                _context.Add(loanedBook);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
-            // При ошибке валидации повторно загружаем данные для ViewBag
-            ViewBag.Books = new SelectList(_context.Books, "BookId", "Title");
+            // Перезагрузка ViewData на случай ошибок
+            ViewData["Books"] = new SelectList(_context.Books, "BookId", "Title", loanedBook.BookId);
+            ViewData["Readers"] = new SelectList(_context.Readers, "ReaderId", "FullName", loanedBook.ReaderId);
+            ViewData["Employees"] = new SelectList(_context.Employees, "EmployeeId", "FullName", loanedBook.EmployeeId);
+
             return View(loanedBook);
         }
 
@@ -174,6 +177,29 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
             _context.LoanedBooks.Remove(loanedBook);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index)); // После удаления перенаправляем на список
+        }
+
+        public IActionResult Back()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> SearchBooks(string term)
+        {
+            if (string.IsNullOrEmpty(term))
+            {
+                return Json(new List<object>());
+            }
+
+            var books = await _context.Books
+                .Where(b => b.Title.Contains(term))
+                .Select(b => new { b.BookId, b.Title })
+                .ToListAsync();
+
+            return Json(books.Select(b => new { id = b.BookId, title = b.Title }));
         }
     }
 }

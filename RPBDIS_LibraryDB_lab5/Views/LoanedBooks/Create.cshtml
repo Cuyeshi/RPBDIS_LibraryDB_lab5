@@ -1,38 +1,69 @@
 ﻿@model RPBDIS_LibraryDB_lab5.Models.LoanedBook
 
 @{
-    ViewData["Title"] = "Добавить выданную книгу";
+    ViewData["Title"] = "Add Loaned Book";
 }
 
-<h1>Добавить выданную книгу</h1>
+<h1>Add Loaned Book</h1>
 
 <form asp-action="Create" method="post">
-    <div>
-        <label>Книга:</label>
-        <select asp-for="BookId" asp-items="ViewBag.Books" class="form-control">
-            <option value="">Выберите книгу</option>
-        </select>
+    <div class="form-group">
+        <label for="BookTitle" class="control-label">Book Title</label>
+        <input type="text" id="BookTitle" class="form-control" placeholder="Start typing book title..." />
+        <input type="hidden" asp-for="BookId" id="BookId" />
     </div>
-    <div class="text-danger">
-        @Html.ValidationMessageFor(model => model.BookId)
+    <div class="form-group">
+        <label asp-for="ReaderId" class="control-label">Reader</label>
+        <select asp-for="ReaderId" class="form-control" asp-items="ViewBag.Readers"></select>
     </div>
-
-    <div>
-        <label>Дата выдачи:</label>
-        <input asp-for="LoanDate" type="date" class="form-control" />
+    <div class="form-group">
+        <label asp-for="LoanDate" class="control-label">Loan Date</label>
+        <input asp-for="LoanDate" class="form-control" type="date" />
     </div>
-    <div class="text-danger">
-        @Html.ValidationMessageFor(model => model.LoanDate)
+    <div class="form-group">
+        <label asp-for="ReturnDate" class="control-label">Return Date</label>
+        <input asp-for="ReturnDate" class="form-control" type="date" />
     </div>
-
-    <div>
-        <label>Дата возврата:</label>
-        <input asp-for="ReturnDate" type="date" class="form-control" />
+    <div class="form-group">
+        <label asp-for="Returned" class="control-label">Returned</label>
+        <input asp-for="Returned" class="form-control" type="checkbox" />
     </div>
-    <div class="text-danger">
-        @Html.ValidationMessageFor(model => model.ReturnDate)
+    <div class="form-group">
+        <label asp-for="EmployeeId" class="control-label">Processed by Employee</label>
+        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.Employees"></select>
     </div>
-
-    <button type="submit" class="btn btn-primary">Добавить</button>
-    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
 </form>
+
+<a asp-action="Index">Back to list</a>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#BookTitle').typeahead({
+                minLength: 2, // Минимум 2 символа для запуска автозаполнения
+                highlight: true, // Подсветка совпадений
+                source: function (query, process) {
+                    // AJAX-запрос для поиска книг
+                    return $.get('/LoanedBooks/SearchBooks', { term: query }, function (data) {
+                        // Ожидаем массив объектов: [{ id: 1, title: "Book1" }, ...]
+                        return process(data.map(item => ({
+                            id: item.id,
+                            name: item.title
+                        })));
+                    });
+                },
+                afterSelect: function (item) {
+                    console.log("Selected item:", item);
+                    $('#BookTitle').val(item.name); // Установка отображаемого значения
+                    $('#BookId').val(item.id);     // Установка скрытого значения
+                }
+            });
+        });
+    </script>
+}
+

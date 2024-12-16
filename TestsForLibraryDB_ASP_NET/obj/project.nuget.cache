@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dbMedREuckw=",
+  "dgSpecHash": "4gl4/Dj6EW4=",
   "success": true,
   "projectFilePath": "C:\\Users\\Cuyeshi\\Documents\\ОТЧЁТЫ\\Лабораторные работы 3-ий курс (5 семестр)\\РПБДИС\\Лабораторная работа №5\\TestsForLibraryDB_ASP_NET\\TestsForLibraryDB_ASP_NET.csproj",
   "expectedPackageFiles": [
@@ -58,6 +58,7 @@
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\Cuyeshi\\.nuget\\packages\\jquery\\1.7.0\\jquery.1.7.0.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.11\\microsoft.aspnetcore.cryptography.internal.8.0.11.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.11\\microsoft.aspnetcore.cryptography.keyderivation.8.0.11.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\8.0.11\\microsoft.aspnetcore.identity.entityframeworkcore.8.0.11.nupkg.sha512",
@@ -175,6 +176,7 @@
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\Cuyeshi\\.nuget\\packages\\select2.js\\4.0.13\\select2.js.4.0.13.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\Cuyeshi\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",
