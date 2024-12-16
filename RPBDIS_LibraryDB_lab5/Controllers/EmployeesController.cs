@@ -20,7 +20,7 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         // GET: Employees
         public IActionResult Index(string nameFilter, string positionFilter, DateOnly? hireDateFilter, int page = 1)
         {
-            int pageSize = 10; // Количество записей на странице
+            int pageSize = 7; // Количество записей на странице
 
             var query = _context.Employees.AsQueryable();
 

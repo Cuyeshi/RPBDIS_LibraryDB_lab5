@@ -19,7 +19,7 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         // GET: Publishers
         public async Task<IActionResult> Index(string nameFilter, string cityFilter, int page = 1)
         {
-            int pageSize = 10;
+            int pageSize = 7;
 
             // Применяем фильтры
             var publishers = _context.Publishers.AsQueryable();

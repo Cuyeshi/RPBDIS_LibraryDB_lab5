@@ -35,7 +35,7 @@ namespace TestsForLibraryDB_ASP_NET
         public void Privacy_Returns_ViewResult()
         {
             // Act
-            var result = _controller.Privacy();
+            var result = _controller.Additionally();
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);

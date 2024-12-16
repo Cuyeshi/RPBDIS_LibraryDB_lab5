@@ -19,7 +19,7 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         // GET: Readers
         public IActionResult Index(string nameFilter, string genderFilter, int page = 1)
         {
-            int pageSize = 10; // Количество записей на странице
+            int pageSize = 7; // Количество записей на странице
 
             // Передаем фильтры в ViewBag для отображения
             ViewBag.NameFilter = nameFilter;

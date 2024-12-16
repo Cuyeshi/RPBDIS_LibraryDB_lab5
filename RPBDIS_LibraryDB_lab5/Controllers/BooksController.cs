@@ -21,7 +21,7 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         // GET: Books
         public IActionResult Index(string titleFilter, string authorFilter, int? genreId, int? publisherId, int page = 1)
         {
-            int pageSize = 10; // Количество записей на странице
+            int pageSize = 7; // Количество записей на странице
 
             // Базовый запрос
             var booksQuery = _context.Books

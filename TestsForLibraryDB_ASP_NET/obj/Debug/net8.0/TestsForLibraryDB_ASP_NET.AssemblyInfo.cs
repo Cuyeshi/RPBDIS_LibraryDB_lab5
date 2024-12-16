@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestsForLibraryDB_ASP_NET")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2ad12d8d90e40039b6dcd89387618c3c11ecce8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+298a48fe9a920cf373a7b11a8a11451c7eba6c39")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestsForLibraryDB_ASP_NET")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestsForLibraryDB_ASP_NET")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

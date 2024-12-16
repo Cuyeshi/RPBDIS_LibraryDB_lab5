@@ -18,7 +18,7 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Additionally()
         {
             return View();
         }

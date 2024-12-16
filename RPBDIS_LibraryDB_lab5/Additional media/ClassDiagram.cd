@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.AdminPageController">
+    <Position X="12.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAABAAAAAABAACAAAAAAAAgABAAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AdminPageController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_userManager" />
+      <Field Name="_roleManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.BooksController">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\BooksController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.EmployeesController">
+    <Position X="1.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\EmployeesController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.GenresController">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\GenresController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.HomeController">
+    <Position X="8.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAIAAAAQAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_logger" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.LoanedBooksController">
+    <Position X="4" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAEBACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\LoanedBooksController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.PublishersController">
+    <Position X="10" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PublishersController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.ReadersController">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ReadersController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers.BooksOnHandsController">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABAAAAAAAAAAAABAAAAAAAAEAEAAAAAA=</HashCode>
+      <FileName>Controllers\Additional controllers\BooksOnHandsController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers.CatalogController">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABAAAAAAAAAAAABAAAAAAAAEAEAAAAAA=</HashCode>
+      <FileName>Controllers\Additional controllers\CatalogController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers.FallReadersController">
+    <Position X="7" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\Additional controllers\FallReadersController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Controllers.Additional_controllers.PersonnelDepartmentController">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAgAAA=</HashCode>
+      <FileName>Controllers\Additional controllers\PersonnelDepartmentController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Data.LibraryDbContext">
+    <Position X="7" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAIIAgAAiAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\LibraryDbContext.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Books" />
+      <Property Name="Genres" />
+      <Property Name="LoanedBooks" />
+      <Property Name="Employees" />
+      <Property Name="Publishers" />
+      <Property Name="Readers" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Data.RPBDIS_LibraryDB_lab5Context">
+    <Position X="17.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Identity\Data\RPBDIS_LibraryDB_lab5Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Models.ApplicationUser">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ApplicationUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Models.Book">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAQAAIEAAiAYIAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Models.Employee">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAgAAAIAAAAACAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Models.ErrorViewModel">
+    <Position X="14" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ErrorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Models.Genre">
+    <Position X="15.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgIAAAAAAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Genre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Models.LoanedBook">
+    <Position X="17.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAAAAAACABAAAAAAAAASAACAAAAABBAAAACAAA=</HashCode>
+      <FileName>Models\LoanedBook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Models.Publisher">
+    <Position X="14" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAQAgQAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Publisher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPBDIS_LibraryDB_lab5.Models.Reader">
+    <Position X="15.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAICAABAIAAQAAAACAAACAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Reader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.EntityFrameworkCore.DbSet&lt;TEntity&gt;">
+    <Position X="6.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.RoleManager&lt;TRole&gt;" Collapsed="true">
+    <Position X="12.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.UserManager&lt;TUser&gt;" Collapsed="true">
+    <Position X="12.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="Microsoft.Extensions.Logging.ILogger&lt;TCategoryName&gt;" Collapsed="true">
+    <Position X="8.25" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

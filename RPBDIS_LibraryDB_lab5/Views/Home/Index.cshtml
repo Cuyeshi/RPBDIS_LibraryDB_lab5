@@ -5,14 +5,14 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<div style="margin-top: 50px"  class="text-center">
     @if (SignInManager.IsSignedIn(User))
     {
         <h1 class="display-4">Добро пожаловать</h1>
-        <p style="font-size: 20px">Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
+        <p style="font-size: 20px; margin-top: 25px">Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
 
         <!-- Кнопки навигации -->
-        <div class="mt-4">
+        <div style="margin-top: 25px" class="mt-4">
             <a href="/Books" class="btn btn-primary btn-lg m-2">Книги</a>
             <a href="/Genres" class="btn btn-info btn-lg m-2">Жанры</a>
             <a href="/LoanedBooks" class="btn btn-success btn-lg m-2">Взятые книги</a>
@@ -30,7 +30,7 @@
         </div>
         <p style="font-size: 20px">Вы также можете выбрать одну из дополнительных опций просмотра таблиц</p>
 
-        <div class="mt-4">
+        <div class="mt-4" style="margin-bottom: 100px">
             <a asp-controller="PersonnelDepartment" asp-action="Index" class="btn btn-secondary">Отдел кадров</a>
             <a asp-controller="Catalog" asp-action="Index" class="btn btn-secondary">Каталог</a>
             <a asp-controller="BooksOnHands" asp-action="Index" class="btn btn-secondary">Книги на руках</a>

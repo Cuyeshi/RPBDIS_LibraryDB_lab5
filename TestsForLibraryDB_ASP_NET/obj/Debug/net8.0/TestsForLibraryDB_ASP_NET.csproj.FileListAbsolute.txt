@@ -327,6 +327,7 @@ C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.DotNet.Scaffolding.Shared.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
@@ -368,6 +369,7 @@ C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Moq.dll
+C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Moq.EntityFrameworkCore.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\NuGet.Common.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\NuGet.Configuration.dll
@@ -620,12 +622,10 @@ C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.AssemblyInfoInputs.cache
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.AssemblyInfo.cs
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.csproj.CoreCompileInputs.cache
+C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.sourcelink.json
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsFor.6611A26E.Up2Date
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\refint\TestsForLibraryDB_ASP_NET.dll
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.pdb
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.genruntimeconfig.cache
 C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\ref\TestsForLibraryDB_ASP_NET.dll
-C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\bin\Debug\net8.0\Moq.EntityFrameworkCore.dll
-C:\Users\Cuyeshi\Documents\ОТЧЁТЫ\Лабораторные работы 3-ий курс (5 семестр)\РПБДИС\Лабораторная работа №5\TestsForLibraryDB_ASP_NET\obj\Debug\net8.0\TestsForLibraryDB_ASP_NET.sourcelink.json

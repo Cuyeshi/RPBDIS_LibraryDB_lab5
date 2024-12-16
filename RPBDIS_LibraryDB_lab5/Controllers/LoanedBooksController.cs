@@ -19,7 +19,7 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
 
         public IActionResult Index(string bookTitleFilter, DateTime? loanDateFilter, int page = 1)
         {
-            int pageSize = 10; // Количество записей на странице
+            int pageSize = 7; // Количество записей на странице
 
             // Фильтрация
             var query = _context.LoanedBooks
