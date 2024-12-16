@@ -185,7 +185,11 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
         }
 
 
-
+        /// <summary>
+        /// Метод для реализации функции автодополнения формы поля поиска книг
+        /// </summary>
+        /// <param name="term"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> SearchBooks(string term)
         {
@@ -201,5 +205,48 @@ namespace RPBDIS_LibraryDB_lab5.Controllers
 
             return Json(books.Select(b => new { id = b.BookId, title = b.Title }));
         }
+
+        /// <summary>
+        /// Метод для реализации функции автодополнения формы поля поиска читателей
+        /// </summary>
+        /// <param name="term"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> SearchReaders(string term)
+        {
+            if (string.IsNullOrEmpty(term))
+            {
+                return Json(new List<object>());
+            }
+
+            var readers = await _context.Readers
+                .Where(r => r.FullName.Contains(term))
+                .Select(r => new { r.ReaderId, r.FullName })
+                .ToListAsync();
+
+            return Json(readers.Select(r => new { id = r.ReaderId, name = r.FullName }));
+        }
+
+        /// <summary>
+        /// Метод для реализации функции автодополнения формы поля поиска сотрудников
+        /// </summary>
+        /// <param name="term"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> SearchEmployees(string term)
+        {
+            if (string.IsNullOrEmpty(term))
+            {
+                return Json(new List<object>());
+            }
+
+            var employees = await _context.Employees
+                .Where(e => e.FullName.Contains(term))
+                .Select(e => new { e.EmployeeId, e.FullName })
+                .ToListAsync();
+
+            return Json(employees.Select(e => new { id = e.EmployeeId, name = e.FullName }));
+        }
+
     }
 }

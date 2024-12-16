@@ -1,5 +1,9 @@
 ﻿@model RPBDIS_LibraryDB_lab5.Models.Employee
 
+@{
+    ViewData["Title"] = "Удаление записи о сотруднике";
+}
+
 <h2>Удалить сотрудника</h2>
 <form asp-action="Delete" method="post">
     <input type="hidden" asp-for="EmployeeId" />
