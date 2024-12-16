@@ -5,24 +5,50 @@
     ViewData["Title"] = "Главная";
 }
 
-<div style="margin-top: 50px"  class="text-center">
+<div style="margin: 0 auto;
+            margin-top: 20px;
+            background-color: sienna;
+            text-align: center;
+            display: block;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            width: 75%"
+     class="text-center">
     @if (SignInManager.IsSignedIn(User))
     {
         <h1 class="display-4">Добро пожаловать</h1>
         <p style="font-size: 20px; margin-top: 25px">Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
 
-        <!-- Кнопки навигации -->
-        <div style="margin-top: 25px" class="mt-4">
-            <a href="/Books" class="btn btn-primary btn-lg m-2">Книги</a>
-            <a href="/Genres" class="btn btn-info btn-lg m-2">Жанры</a>
-            <a href="/LoanedBooks" class="btn btn-success btn-lg m-2">Взятые книги</a>
-        </div>
+        <table align="center" style="position: relative; width: 700px; height: 400px;">
+            <tr>
+                <td style="position: relative;">
+                    <a href="/Books" class="btn-custom btn-books"><span>Книги</span></a>
+                </td>
+                <td style="position: relative;">
+                    <a href="/Genres" class="btn-custom btn-genres"><span>Жанры</span></a>
+                </td>
+                <td style="position: relative;">
+                    <a href="/LoanedBooks" class="btn-custom btn-loaned"><span>Взятые книги</span></a>
+                </td>
+            </tr>
+            <tr>
+                <td style="position: relative;">
+                    <a href="/Employees" class="btn-custom btn-employees"><span>Сотрудники</span></a>
+                </td>
+                <td style="position: relative;">
+                    <a href="/Publishers" class="btn-custom btn-publishers"><span>Издатели</span></a>
+                </td>
+                <td style="position: relative;">
+                    <a href="/Readers" class="btn-custom btn-readers"><span>Читатели</span></a>
+                </td>
+            </tr>
 
-        <div class="mt-4">
-            <a href="/Employees" class="btn btn-danger btn-lg m-2">Сотрудники</a>
-            <a href="/Publishers" class="btn btn-warning btn-lg m-2">Издатели</a>
-            <a href="/Readers" class="btn btn-secondary btn-lg m-2" style="background-color: purple; border-color: purple;">Читатели</a>
-        </div>
+        </table>
+           
+           
+           
 
         <div style="width: 100%; text-align: center;">
             <p></p>
@@ -45,3 +71,136 @@
 
     
 </div>
+
+<style>  
+
+    
+    /* Основной стиль кнопок */
+    .btn-custom {
+        margin-top: -100px;
+        position: absolute; /* Фиксируем каждую кнопку */
+        width: 50px;
+        height: 150px;
+        color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: width 0.5s ease, transform 0.5s ease; /* Настроили анимацию отдельно */
+        left: 50%; /* Центруем кнопки относительно родителя */
+        transform: translateX(-50%); /* Для центра кнопки */
+    }
+
+    /* Добавление центральной серой полосы (переплёт) */
+    .btn-custom::after {
+        content: "";
+        position: absolute;
+            
+        left: 50%;
+        width: 30%; /* Узкая полоса */
+        height: 95%; /* Полоса не касается краёв */
+        background-color: lightgray;
+        transform: translateX(-50%);
+        z-index: 1; /* Линии над белой рамкой, но под текстом */
+        transition: all 0.3s ease;
+    }
+
+    /* Анимация при наведении */
+    .btn-custom:hover {
+        width: 200px; /* Расширение кнопки */
+        color: black; /* Текст становится чёрным */
+        transform: translateX(-100px); /* Смещаем центр на половину нового размера */
+    }
+
+    /* Изменение переплёта в рамку */
+    .btn-custom:hover::after {
+        width: 90%; /* Рамка с отступами */
+        height: 94%; /* Рамка с отступами */
+        margin: auto;
+        opacity: 1;
+        background-color: white; /* Белая рамка */
+    }
+
+    /* Добавление строк текста */
+    .btn-custom:hover::before {
+        content: "";
+        position: absolute;
+        inset: 10%; /* Отступы внутри рамки */
+        background: repeating-linear-gradient( to bottom, transparent, transparent 4px, rgba(0, 0, 0, 0.1) 4px, rgba(0, 0, 0, 0.1) 5px ); /* Линии: прозрачные + серые */
+        transform: translateY(0);
+        opacity: 1;
+        z-index: 2;
+    }
+
+    
+
+    /* Разные цвета для каждой кнопки */
+    .btn-books {
+        left: 50%;
+        background-color: #007bff; /* Синий */
+    }
+
+    .btn-genres {
+        right: 80px;
+        background-color: #17a2b8; /* Бирюзовый */
+    }
+
+    .btn-loaned {
+        left: 70%;
+        background-color: #28a745; /* Зеленый */
+    }
+
+    .btn-employees {
+        left: 10%;
+        background-color: #dc3545; /* Красный */
+    }
+
+    .btn-publishers {
+        left: 70%;
+        background-color: #ffc107; /* Желтый */
+    }
+
+    .btn-readers {
+        right: 340px;
+        background-color: purple; /* Фиолетовый */
+    }
+
+    /* Скрытие текста при уменьшенном размере */
+    .btn-custom::before {
+        content: attr(data-text); /* Использование текста из data-text */
+        position: absolute;
+        color: black; /* Чёрный текст */
+        opacity: 0;
+        z-index: 3;
+        transform: translateY(0); /* Скрыт ниже кнопки */
+        transition: opacity 0.1s ease, transform 0.5s ease;
+    }
+
+    
+
+
+
+    .btn-custom span {
+        padding-top: 70px;
+        padding-bottom: 70px;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 190px;
+        font-size: 20px;
+        z-index: 3; /* Текст над всеми элементами */
+        color: black;
+        opacity: 0;
+        transition: opacity 0.1s ease;
+    }
+
+
+    /* Текст кнопки */
+    .btn-custom span:hover {
+        
+        opacity: 1;
+    }
+</style>
