@@ -10,10 +10,13 @@ namespace RPBDIS_LibraryDB_lab5.Models
         [Key]
         public int PublisherId { get; set; }
 
+        [Required(ErrorMessage = "Название издателя обязательно")]
         public string Name { get; set; } = null!;
 
+        [Required(ErrorMessage = "Название города обязательно")]
         public string City { get; set; } = null!;
 
+        [Required(ErrorMessage = "Название адреса обязательно")]
         public string Address { get; set; } = null!;
 
         public virtual ICollection<Book> Books { get; set; } = new List<Book>();

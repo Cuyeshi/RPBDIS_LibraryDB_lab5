@@ -8,16 +8,21 @@ namespace RPBDIS_LibraryDB_lab5.Models
         [Key]
         public int LoanId { get; set; }
 
+        [Required(ErrorMessage = "Название книги обязательно")]
         public int? BookId { get; set; }
 
+        [Required(ErrorMessage = "Имя читателя обязательно")]
         public int? ReaderId { get; set; }
 
+        [Required(ErrorMessage = "Дата взятия обязательна")]
         public DateOnly LoanDate { get; set; }
 
+        [Required(ErrorMessage = "Дата возвращения обязательна")]
         public DateOnly? ReturnDate { get; set; }
 
         public bool Returned { get; set; }
 
+        [Required(ErrorMessage = "Имя сотрудника обязательно")]
         public int? EmployeeId { get; set; }
 
         public virtual Book? Book { get; set; }

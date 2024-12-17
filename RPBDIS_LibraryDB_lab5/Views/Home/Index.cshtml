@@ -6,92 +6,92 @@
 }
 
 
-    @if (SignInManager.IsSignedIn(User))
-    {
-    <div style="margin: 0 auto;
-            margin-top: 50px;
-            background-color: sienna;
-            text-align: center;
-            display: block;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 950px;
-            width: 75%"
-         class="text-center">
-        <h1 class="display-4" style="color:white">Добро пожаловать</h1>
-        <p style="font-size: 20px; margin-top: 25px; margin-bottom: 70px; color: white">Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
+@if (SignInManager.IsSignedIn(User))
+{
+<div style="margin: 0 auto;
+        margin-top: 50px;
+        background-color: sienna;
+        text-align: center;
+        display: block;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 950px;
+        width: 75%"
+        class="text-center">
+    <h1 class="display-4" style="color:white">Добро пожаловать</h1>
+    <p style="font-size: 20px; margin-top: 25px; margin-bottom: 70px; color: white">Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
 
-        <div class="background-rectangle">
-            <div class="background-rectangle-line" style="margin-top: 170px"></div>
-            <div class="background-rectangle-line" style="margin-top: 165px"></div>
-        </div>
-
-        <table align="center" style="position: relative; width: 700px; height: 400px;">
-            <tr>
-                <td style="position: relative;">
-                    <a href="/Books" class="btn-custom btn-books"><span>Книги</span></a>
-                </td>
-                <td style="position: relative;">
-                    <a href="/Genres" class="btn-custom btn-genres"><span>Жанры</span></a>
-                </td>
-                <td style="position: relative;">
-                    <a href="/LoanedBooks" class="btn-custom btn-loaned"><span>Взятые книги</span></a>
-                </td>
-            </tr>
-            <tr>
-                <td style="position: relative;">
-                    <a href="/Employees" class="btn-custom btn-employees"><span>Сотрудники</span></a>
-                </td>
-                <td style="position: relative;">
-                    <a href="/Publishers" class="btn-custom btn-publishers"><span>Издатели</span></a>
-                </td>
-                <td style="position: relative;">
-                    <a href="/Readers" class="btn-custom btn-readers"><span>Читатели</span></a>
-                </td>
-            </tr>
-
-        </table>
-
-
-        <p class="display-4" style="text-align: left; position:absolute; margin-top: 100px; margin-left: 80px; font-size:30px; color: white">
-            Вы также можете выбрать <br /> одну из  дополнительных опций <br />просмотра таблиц
-        </p>
-
-        <div class="background-smallRectangle">
-            <div class="background-rectangle-line" style="margin-bottom: -130px"></div>
-            <div class="door-container">
-                <div class="door">
-                    <div class="front">Дополнительные <br />опции</div>
-                    <div class="back">
-                        продам гараж 
-                        <br />
-                        +375(29)985-55-59
-                    </div>
-                </div>
-                <div style="margin-top: -189px">
-                    <a asp-controller="PersonnelDepartment" asp-action="Index" class="btn btn-secondary">Отдел кадров</a>
-                    <a asp-controller="Catalog" asp-action="Index" class="btn btn-secondary">Каталог</a>
-                </div>
-                <div style="margin-top: 73px">
-                    <a asp-controller="BooksOnHands" asp-action="Index" class="btn btn-secondary">Книги на руках</a>
-
-                </div>
-                <div style="margin-top: 2px">
-                    <a asp-controller="FallReaders" asp-action="Index" class="btn btn-secondary">Просроченные книги</a>
-
-                </div>
-
-            </div>
-            
-        </div>
+    <div class="background-rectangle">
+        <div class="background-rectangle-line" style="margin-top: 170px"></div>
+        <div class="background-rectangle-line" style="margin-top: 165px"></div>
     </div>
 
-    }
-    else
-    {
-        <h3 style="background-color: white">Действия на данном сайте будут доступны лишь после авторизации</h3>
-    }
+    <table align="center" style="position: relative; width: 700px; height: 400px;">
+        <tr>
+            <td style="position: relative;">
+                <a href="/Books" class="btn-custom btn-books"><span>Книги</span></a>
+            </td>
+            <td style="position: relative;">
+                <a href="/Genres" class="btn-custom btn-genres"><span>Жанры</span></a>
+            </td>
+            <td style="position: relative;">
+                <a href="/LoanedBooks" class="btn-custom btn-loaned"><span>Взятые книги</span></a>
+            </td>
+        </tr>
+        <tr>
+            <td style="position: relative;">
+                <a href="/Employees" class="btn-custom btn-employees"><span>Сотрудники</span></a>
+            </td>
+            <td style="position: relative;">
+                <a href="/Publishers" class="btn-custom btn-publishers"><span>Издатели</span></a>
+            </td>
+            <td style="position: relative;">
+                <a href="/Readers" class="btn-custom btn-readers"><span>Читатели</span></a>
+            </td>
+        </tr>
+
+    </table>
+
+
+    <p class="display-4" style="text-align: left; position:absolute; margin-top: 100px; margin-left: 80px; font-size:30px; color: white">
+        Вы также можете выбрать <br /> одну из  дополнительных опций <br />просмотра таблиц
+    </p>
+
+    <div class="background-smallRectangle">
+        <div class="background-rectangle-line" style="margin-bottom: -130px"></div>
+        <div class="door-container">
+            <div class="door">
+                <div class="front">Дополнительные <br />опции</div>
+                <div class="back">
+                    продам гараж 
+                    <br />
+                    +375(29)985-55-59
+                </div>
+            </div>
+            <div style="margin-top: -189px">
+                <a asp-controller="PersonnelDepartment" asp-action="Index" class="btn btn-secondary">Отдел кадров</a>
+                <a asp-controller="Catalog" asp-action="Index" class="btn btn-secondary">Каталог</a>
+            </div>
+            <div style="margin-top: 73px">
+                <a asp-controller="BooksOnHands" asp-action="Index" class="btn btn-secondary">Книги на руках</a>
+
+            </div>
+            <div style="margin-top: 2px">
+                <a asp-controller="FallReaders" asp-action="Index" class="btn btn-secondary">Просроченные книги</a>
+
+            </div>
+
+        </div>
+            
+    </div>
+</div>
+
+}
+else
+{
+    <h3 style="background-color: white; text-align:center">Действия на данном сайте будут доступны лишь после авторизации</h3>
+}
 
     
 

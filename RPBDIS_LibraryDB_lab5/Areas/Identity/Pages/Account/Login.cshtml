@@ -2,7 +2,7 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Войти";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -20,7 +20,7 @@
                     <label for="Email" class="form-label">Имя пользователя</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input name="Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <input type="password" name="Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
                     <label for="Password" class="form-label">Пароль</label>
                 </div>
                 

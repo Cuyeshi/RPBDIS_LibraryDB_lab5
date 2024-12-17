@@ -11,22 +11,26 @@
         <label for="BookTitle" class="control-label">Название книги</label>
         <input type="text" id="BookTitle" class="form-control" placeholder="Начните вводить название..." />
         <input type="hidden" asp-for="BookId" id="BookId" />
+        <span asp-validation-for="BookId" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label for="ReaderName" class="control-label">Читатель</label>
         <input type="text" id="ReaderName" class="form-control" placeholder="Начните вводить имя читателя..." />
         <input type="hidden" asp-for="ReaderId" id="ReaderId" />
+        <span asp-validation-for="ReaderId" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="LoanDate" class="control-label">Дата займа</label>
         <input asp-for="LoanDate" class="form-control" type="date" />
+        <span asp-validation-for="LoanDate" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="ReturnDate" class="control-label">Дата возвращения</label>
         <input asp-for="ReturnDate" class="form-control" type="date" />
+        <span asp-validation-for="ReturnDate" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -41,6 +45,7 @@
         <label for="EmployeeName" class="control-label">Обработано сотрудником</label>
         <input type="text" id="EmployeeName" class="form-control" placeholder="Начните вводить имя сотрудника..." />
         <input type="hidden" asp-for="EmployeeId" id="EmployeeId" />
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
     </div>
 
     <div class="form-group">

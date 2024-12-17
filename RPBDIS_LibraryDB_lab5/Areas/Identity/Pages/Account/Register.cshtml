@@ -1,9 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
-}
-@{
+    ViewData["Title"] = "Регистрация";
     Layout = "_Layout";
 }
 
@@ -15,34 +13,44 @@
             @Html.AntiForgeryToken()
             <h2>Регистрация</h2>
             <hr />
+            <!-- Сводка ошибок для всей модели -->
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <!-- Поле для имени пользователя -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" placeholder="Username" name="Input.Username" />
+                <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" placeholder="Username" />
                 <label asp-for="Input.Username">Имя пользователя</label>
                 <span asp-validation-for="Input.Username" class="text-danger"></span>
             </div>
+
+            <!-- Поле для почты -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="email" aria-required="true" placeholder="name@example.com" name="Input.Email" />
+                <input asp-for="Input.Email" class="form-control" autocomplete="email" aria-required="true" placeholder="name@example.com" />
                 <label asp-for="Input.Email">Почта</label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
 
+            <!-- Поле для пароля -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" name="Input.Password" />
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password" />
                 <label asp-for="Input.Password">Пароль</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
+
+            <!-- Поле для подтверждения пароля -->
             <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" name="Input.ConfirmPassword" />
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
                 <label asp-for="Input.ConfirmPassword">Подтверждение пароля</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+
+            <!-- Кнопка отправки формы -->
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Зарегистрироваться</button>
         </form>
     </div>
-    
 </div>
 
+<!-- Подключение скриптов для клиентской валидации -->
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
