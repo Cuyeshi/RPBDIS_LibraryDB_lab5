@@ -5,21 +5,22 @@
     ViewData["Title"] = "Главная";
 }
 
-<div style="margin: 0 auto;
-            margin-top: 20px;
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+    <div style="margin: 0 auto;
+            margin-top: 50px;
             background-color: sienna;
             text-align: center;
             display: block;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 900px;
+            height: 950px;
             width: 75%"
-     class="text-center">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <h1 class="display-4">Добро пожаловать</h1>
-        <p style="font-size: 20px; margin-top: 25px; margin-bottom: 30px">Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
+         class="text-center">
+        <h1 class="display-4" style="color:white">Добро пожаловать</h1>
+        <p style="font-size: 20px; margin-top: 25px; margin-bottom: 70px; color: white">Вы можете выбрать одну из таблиц для просмотра или редактирования</p>
 
         <div class="background-rectangle">
             <div class="background-rectangle-line" style="margin-top: 170px"></div>
@@ -51,23 +52,41 @@
             </tr>
 
         </table>
-           
-           
-           
 
-        <div style="width: 100%; text-align: center;">
-            <p></p>
-            <hr style="display: inline-block; width: 60%; border: 0; border-top: 5px solid gray;">
+
+        <p class="display-4" style="text-align: left; position:absolute; margin-top: 100px; margin-left: 80px; font-size:30px; color: white">
+            Вы также можете выбрать <br /> одну из  дополнительных опций <br />просмотра таблиц
+        </p>
+
+        <div class="background-smallRectangle">
+            <div class="background-rectangle-line" style="margin-bottom: -130px"></div>
+            <div class="door-container">
+                <div class="door">
+                    <div class="front">Дополнительные <br />опции</div>
+                    <div class="back">
+                        продам гараж 
+                        <br />
+                        +375(29)985-55-59
+                    </div>
+                </div>
+                <div style="margin-top: -189px">
+                    <a asp-controller="PersonnelDepartment" asp-action="Index" class="btn btn-secondary">Отдел кадров</a>
+                    <a asp-controller="Catalog" asp-action="Index" class="btn btn-secondary">Каталог</a>
+                </div>
+                <div style="margin-top: 73px">
+                    <a asp-controller="BooksOnHands" asp-action="Index" class="btn btn-secondary">Книги на руках</a>
+
+                </div>
+                <div style="margin-top: 2px">
+                    <a asp-controller="FallReaders" asp-action="Index" class="btn btn-secondary">Просроченные книги</a>
+
+                </div>
+
+            </div>
+            
         </div>
-        <p style="font-size: 20px">Вы также можете выбрать одну из дополнительных опций просмотра таблиц</p>
+    </div>
 
-        <div class="mt-4" style="margin-bottom: 100px">
-            <a asp-controller="PersonnelDepartment" asp-action="Index" class="btn btn-secondary">Отдел кадров</a>
-            <a asp-controller="Catalog" asp-action="Index" class="btn btn-secondary">Каталог</a>
-            <a asp-controller="BooksOnHands" asp-action="Index" class="btn btn-secondary">Книги на руках</a>
-            <a asp-controller="FallReaders" asp-action="Index" class="btn btn-secondary">Просроченные книги</a>
-
-        </div>
     }
     else
     {
@@ -75,7 +94,6 @@
     }
 
     
-</div>
 
 <style>  
 
@@ -91,6 +109,77 @@
         border-color: #572e1b;
     }
 
+    .background-smallRectangle {
+        margin-left: 200px;
+        left: 45%;
+        right: 25%;
+        margin-top: 30px;
+        position: absolute;
+        height: 280px;
+        background-color: #422314;
+        border-style: solid;
+        border-width: 6px;
+        border-color: #572e1b;
+        z-index: 0;
+    }
+
+    .door-container {
+        margin-top: -24px;
+        position:absolute;
+        perspective: 1000px; /* Добавляем перспективу для 3D-эффекта */
+        width: 100%;
+        height: 100%;
+    }
+
+    .door {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d; /* Сохраняем 3D для дочерних элементов */
+        transition: transform 0.5s ease-in-out; /* Плавная анимация вращения */
+        transform-origin: right; /* Точка вращения — левая сторона */
+    }
+
+    /* Передняя сторона */
+    .front, .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        
+        backface-visibility: hidden; /* Скрытие задней стороны при повороте */
+    }
+
+    .front {
+        background: #572e1b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        border-style: solid;
+        border-width: 8px;
+        border-color: #472616;
+    }
+
+    /* Обратная сторона */
+    .back {
+        background: #29160d;
+        transform: rotateY(180deg); /* Переворачиваем обратную сторону */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    /* Анимация на hover */
+    .door-container:hover .door {
+        transform: rotateY(100deg); /* Поворот дверцы на 180 градусов */
+    }
+
+
+
+
     .background-rectangle-line {
         display: inline-block;        
         width: 100%;
@@ -102,7 +191,7 @@
     .btn-custom {
         margin-top: -100px;
         position: absolute; /* Фиксируем каждую кнопку */
-        width: 50px;
+        width: 30px;
         height: 150px;
         color: transparent;
         display: flex;
@@ -123,7 +212,7 @@
         position: absolute;
             
         left: 50%;
-        width: 30%; /* Узкая полоса */
+        width: 40%; /* Узкая полоса */
         height: 95%; /* Полоса не касается краёв */
         background-color: lightgray;
         transform: translateX(-50%);
